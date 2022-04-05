@@ -1,2 +1,2 @@
 # DoMath
-A small tool that helps deal with math.
+A small tool helps deal with math.
