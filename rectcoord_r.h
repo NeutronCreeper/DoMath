@@ -9,7 +9,6 @@
 
 using namespace std;
 
-
 class point_r{
     private:
     ratio x,y;
@@ -44,6 +43,7 @@ class point_r{
         return y;
     };
     friend point_r point_r_create(const ratio& a,const ratio& b);
+    friend ratio areaofTriangle_r(point_r& A,point_r& B,point_r& C);
 };
 point_r point_r_create(const ratio& a,const ratio& b){
     point_r ans;
@@ -103,31 +103,37 @@ class line_r{
         if(k*l.k==to_ratio(-1)) return true;
         return false;
     };
+    void solve_from_point_r(point_r& m,point_r& n){
+        line_r ans;
+        if(m.getx()==n.getx()) cout<<"[Warning]VERTICAL: Zero divided;\n";
+        k=((m.gety())-(n.gety()))/((m.getx())-(n.getx()));
+        b=(m.gety())-(k*(m.getx()));
+    };
+    friend line_r line_r_create(const ratio& m,const ratio& n);
+    friend ratio areaofTriangle_r(point_r& A,point_r& B,point_r& C);
 };
-
-
-/* liner solveliner(pointr* m,pointr* n){
-    liner ans;
-    if((m->getx())==(n->getx())) cout<<"[Warning]VERTICAL: Zero divided;\n";
-    ratio k;
-    k=((m->gety())-(n->gety()))/((m->getx())-(n->getx()));
-    ans.set(k,((m->gety())-(k*(m->getx()))));
+line_r line_r_create(const ratio& m,const ratio& n){
+    line_r ans;
+    ans.k=m;
+    ans.b=n;
     return ans;
-}; */
-/* pointr solvepointr(liner* i,liner* j){
-    pointr ans;
-    if(i->getk()==j->getk()){
+};
+point_r solve_from_line_r(line_r& i,line_r& j){
+    point_r ans;
+    if(i.getk()==j.getk()){
         cout<<"[Warning]PARALLEL: No intersection;\n";
         ans.set(to_ratio(0),to_ratio(0));
         return ans;
     }
-    ratio x=((j->getb()-i->getb())/(i->getk()-j->getk()));
-    ans.set(x,i->getk()*x+i->getb());
+    ratio x=((j.getb()-i.getb())/(i.getk()-j.getk()));
+    ans.set(x,i.getk()*x+i.getb());
     return ans;
-}; */
-/* ratio areaofTriangler(pointr* A,pointr* B,pointr* C){
+}
+ratio areaofTriangle_r(point_r& A,point_r& B,point_r& C){
     ratio ans;
-    ans=(absr(A->gety()-solveliner(B,C).valueofY(A->getx()))*absr(B->getx()-C->getx()));
-    ans.mulc(2);
+    line_r l;
+    l.solve_from_point_r(B,C);
+    ans=(absr(A.y-l.valueofY(A.x))*absr(B.x-C.x));
+    ans.div(2);
     return ans;
-}; */
+};
