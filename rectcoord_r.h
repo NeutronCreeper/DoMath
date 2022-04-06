@@ -1,4 +1,4 @@
-#define RECTCOORD_R
+#define RECTCOORD_RATIO
 
 #ifndef iostream
 #include<iostream>

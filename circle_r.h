@@ -1,4 +1,4 @@
-#define CIRCLE_R
+#define CIRCLE_RATIO
 
 #ifndef iostream
 #include<iostream>
@@ -6,7 +6,7 @@
 #ifndef RATIO
 #include "ratio.h"
 #endif
-#ifndef RECTCOORD_R
+#ifndef RECTCOORD_RATIO
 #include "rectcoord_r.h"
 #endif
 #ifndef _PI

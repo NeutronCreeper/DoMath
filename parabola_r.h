@@ -6,8 +6,11 @@
 #ifndef RATIO
 #include "ratio.h"
 #endif
-#ifndef RECTCOORD_R
+#ifndef RECTCOORD_RATIO
 #include "rectcoord_r.h"
+#endif
+#ifndef REAL
+#include "real.h"
 #endif
 
 class parabolar{
@@ -29,10 +32,10 @@ class parabolar{
     ratio delta(){
         return b*b-mul(a*c,4);
     };
-    /* float root1(){
+    /* real root1(){
         return (-b+sqrt(delta()))/(2*a);
     };
-    float root2(){
+    real root2(){
         return (-b-sqrt(delta()))/(2*a);
     }; */
     point_r top(){

@@ -1,3 +1,5 @@
+// Unfixed codes are saved here
+
 //real:(ratio)^(ratio)
 /* class real{
     //real:pow(ratio a,ratio b)
@@ -37,37 +39,3 @@
         tail=tail->up;
     }
 } */
-
-//parabolar:y=ax^2+bx+c,ratio a,b,c
-/* class parabolar{
-    private:
-    ratio a,b,c;
-    public:
-    void set(ratio p,ratio q,ratio r,bool akm=0){
-        if(akm){
-            r+=(p*pow(q,2)-(4*p*r));
-            q*=(2*p);
-        }
-        a=p;
-        b=q;
-        c=r;
-    };
-    void print(){
-        cout<<"parabola:y="<<a.expression()<<"x^2+"<<b.expression()<<"x+"<<c.expression()<<";\n";
-    };
-    ratio delta(){
-        return b*b-4*a*c;
-        //return pow(b,2)-4*a*c;
-    };
-    float root1(){
-        return (-b+sqrt(delta()))/(2*a);
-    };
-    float root2(){
-        return (-b-sqrt(delta()))/(2*a);
-    };
-    pointr top(){
-        pointr ans;
-        ans.set(b/(-2*a),(4*a*c-b*b)/(4*a));
-        return ans;
-    };
-}; */
