@@ -24,7 +24,7 @@ using namespace std;
 
 string levels[6]={"debug","fatal","error","warn ","note ","info "};
 
-#ifndef LOG_donot
+#ifdef LOG_do
 ofstream Programlog(timeString()+" DoMathLog.txt");
 void logw(string text,char level,string tag="DoMath"){
     refreshTime();

@@ -14,6 +14,10 @@ class point_r{
     ratio x,y;
     char name='P';
     public:
+    friend ostream& operator<<(ostream& output,const point_r& P){
+        output<<P.name<<'('<<P.x<<','<<P.y<<')';
+        return output;
+    };
     void operator=(const point_r& P){
         x=P.x;
         y=P.y;
@@ -21,15 +25,6 @@ class point_r{
     bool operator==(const point_r& P){
         if((x==P.x)&&(y==P.y)) return true;
         return false;
-    };
-    void print(){
-        x.simplify();
-        y.simplify();
-        cout<<name<<'(';
-        x.print();
-        cout<<',';
-        y.print();
-        cout<<");\n";
     };
     void set(ratio a,ratio b,char c='P'){
         x=a;
@@ -65,14 +60,9 @@ class line_r{
         if((k==l.k)&&(b==l.b)) return true;
         return false;
     };
-    void print(){
-        k.simplify();
-        b.simplify();
-        cout<<name<<":y=";
-        k.print();
-        cout<<"x+";
-        b.print();
-        cout<<";\n";
+    friend ostream& operator<<(ostream& output,const line_r& i){
+        output<<i.name<<":y="<<i.k<<"x+"<<i.b<<';';
+        return output;
     };
     void set(ratio& x,ratio& y,char c='l'){
         k=x;
@@ -133,7 +123,7 @@ ratio areaofTriangle_r(point_r& A,point_r& B,point_r& C){
     ratio ans;
     line_r l;
     l.solve_from_point_r(B,C);
-    ans=(absr(A.y-l.valueofY(A.x))*absr(B.x-C.x));
+    ans=(A.y-l.valueofY(A.x)).abs()*(B.x-C.x).abs();
     ans.div(2);
     return ans;
 };

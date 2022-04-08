@@ -30,3 +30,6 @@ long gcd(long m,long n){
 long lcm(long* m,long* n){
     return *m*(*n)/gcd(*m,*n);
 };
+long pow_integer(const long& m,const short& n){
+    return (long)std::round(std::pow(m,n));
+};

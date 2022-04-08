@@ -7,11 +7,12 @@
 
 class ratio{
     //ratio:p/q
+    friend ratio ratio_create(long a,short b);
     private:
     long p=0;
     short q=1;
     public:
-    void set(long m,int n){
+    void set(long m,short n=1){
         p=m;
         q=n;
     };
@@ -20,18 +21,6 @@ class ratio{
     };
     long getq(){
         return q;
-    };
-    void copy(ratio* m){
-        set(m->getp(),m->getq());
-    };
-    float value(){
-        return p/q;
-    };
-    void print(){
-        std::cout<<'('<<p<<'/'<<q<<')';
-    };
-    std::string expression(){
-        return '('+std::to_string(p)+'/'+std::to_string(q)+')';
     };
     void simplify(){
         long x=gcd(p,q);
@@ -92,6 +81,10 @@ class ratio{
         ans.q=this->q*m.p;
         return ans;
     };
+    friend std::ostream& operator<<(std::ostream& output,const ratio& m){
+        output<<'('<<m.p<<'/'<<m.q<<')';
+        return output;
+    };
     void add(short m){
         p+=q*m;
     };
@@ -105,13 +98,35 @@ class ratio{
     void div(short m){
         q*=m;
     };
-    friend ratio ratio_create(long a,short b);
+    int to_integer(){
+        return p/q;
+    };
+    float to_float(){
+        return p/q;
+    };
+    ratio abs(){
+        simplify();
+        if(p<0){
+            ratio ans;
+            ans.p=~p+1;
+            ans.q=q;
+            return ans;
+        }
+        return *this;
+    };
+    ratio pow(const short& n){
+        ratio ans;
+        ans.simplify();
+        ans.p=pow_integer(p,n);
+        ans.q=pow_integer(q,n);
+        return ans;
+    };
     friend ratio add(const ratio& m,const short& n);
     friend ratio sub(const ratio& m,const short& n);
     friend ratio mul(const ratio& m,const short& n);
     friend ratio div(const ratio& m,const short& n);
 };
-ratio ratio_create(long a,short b){
+ratio ratio_create(long a,short b=1){
     ratio ans;
     ans.p=a;
     ans.q=b;
@@ -145,10 +160,4 @@ ratio to_ratiof(float n){
     ans.set((long)10000*n,10000);
     ans.simplify();
     return ans;
-};
-ratio absr(ratio m){
-    m.simplify();
-    if(m.getq()>0) return m;
-    m.mul(-1);
-    return m;
 };

@@ -1,4 +1,4 @@
-#define PARABOLA_R
+#define PARABOLA_RATIO
 
 #ifndef iostream
 #include<iostream>
@@ -13,7 +13,7 @@
 #include "real.h"
 #endif
 
-class parabolar{
+class parabola_r{
     private:
     ratio a,b,c;
     public:
@@ -26,8 +26,9 @@ class parabolar{
         b=q;
         c=r;
     };
-    void print(){
-        cout<<"parabola:y="<<a.expression()<<"x^2+"<<b.expression()<<"x+"<<c.expression()<<";\n";
+    friend ostream& operator<<(ostream& output,const parabola_r p){
+        output<<"parabola:y="<<p.a<<"x^2"<<p.b<<"x+"<<p.c<<";";
+        return output;
     };
     ratio delta(){
         return b*b-mul(a*c,4);
@@ -39,8 +40,6 @@ class parabolar{
         return (-b-sqrt(delta()))/(2*a);
     }; */
     point_r top(){
-        point_r ans;
-        ans.set(b/mul(a,-2),(mul(a*c,4)-b*b)/mul(a,4));
-        return ans;
+        return point_r_create(b/mul(a,-2),(mul(a*c,4)-b*b)/mul(a,4));
     };
 };

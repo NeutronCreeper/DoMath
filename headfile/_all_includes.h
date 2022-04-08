@@ -29,3 +29,12 @@
 #ifndef RECTCOORD_RATIO
 #include "rectcoord_r.h"
 #endif
+#ifndef CIRCLE_RATIO
+#include "circle_r.h"
+#endif
+#ifndef REAL
+#include "real.h"
+#endif
+#ifndef PARABOLA_RATIO
+#include "parabola_r.h"
+#endif

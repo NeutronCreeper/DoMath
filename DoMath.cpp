@@ -4,14 +4,13 @@
 
 
 #include "including.h"
-
+#include "setting.h"
 
 using namespace std;
 
 
-#define LOG_donot
-bitset<16> bit16;
 
+#define LOG_donot
 
 
 ////////////////////////////////////////////////////////////////

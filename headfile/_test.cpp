@@ -1,8 +1,8 @@
 #include<iostream>
 using namespace std;
 
-#define LOG_donot
+#include "rectcoord.h"
+
 int main(){
-    cout<<"Hi!\n";
     return 0;
 }

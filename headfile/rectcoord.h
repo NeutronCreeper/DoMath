@@ -39,11 +39,9 @@ class point{
         ans.y=y-P.x;
         return ans;
     };
-    void print(){
-        std::cout<<name<<'('<<x<<','<<y<<");\n";
-    };
-    std::string expression(){
-        return name+"("+to_string(x)+","+to_string(y)+");\n";
+    friend std::ostream& operator<<(std::ostream& output,const point& m){
+        output<<m.name<<'('<<m.x<<'/'<<m.y<<')';
+        return output;
     };
     void set(float a,float b,char c='P'){
         x=a;
@@ -79,8 +77,9 @@ class line{
         if((k==l.k)&&(b==l.b)) return true;
         return false;
     };
-    void print(){
-        std::cout<<name<<":y="<<k<<"x+"<<b<<";\n";
+    friend std::ostream& operator<<(std::ostream& output,const line& m){
+        output<<m.name<<":y="<<m.k<<"x+"<<m.b<<';';
+        return output;
     };
     void set(float x,float y,char c='l'){
         k=x;
