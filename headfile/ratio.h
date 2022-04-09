@@ -31,6 +31,10 @@ class ratio{
             p=~p+1;
         };
     };
+    ratio(long a=0,short b=1){
+        p=a;
+        q=b;
+    };
     bool operator==(const ratio& m){
         if(this->p*m.q==this->q*m.p) return true;
         return false;

@@ -1,2 +1,4 @@
 # DoMath
-A small tool helps deal with math.
+A small tool that helps deal with math.
+Written in cpp.
+Just for fun.

@@ -13,8 +13,13 @@
 using namespace std;
 class parabola{
     private:
-    float a=1,b=0,c=0;
+    float a,b,c;
     public:
+    parabola(float x=1,float y=0,float z=0){
+        a=x;
+        b=y;
+        c=z;
+    };
     void operator=(parabola w){
         a=w.a;
         b=w.b;
@@ -33,8 +38,9 @@ class parabola{
         b=q;
         c=r;
     };
-    void print(){
-        cout<<"parabola:y="<<a<<"x^2+"<<b<<"x+"<<c<<";\n";
+    friend std::ostream& operator<<(std::ostream& output,const parabola& m){
+        output<<"{parabola:y="<<m.a<<"x^2+"<<m.b<<"x+"<<m.c<<'}';
+        return output;
     };
     float geta(){
         return a;
@@ -76,31 +82,17 @@ class parabola{
         b=((y1-y2)/(x1-x2))-((x1+x2)*a);
         c=y1-a*x1*x1-b*x1;
     };
-    //friend parabola parabola_create(float p,float q,float r,bool akm=false);
+    friend parabola parabola_create(const float& p,const float& q,const float& r,bool akm=false);
 };
-/* parabola parabola_create(float p,float q,float r,bool akm=false){
+parabola parabola_create(const float& p,const float& q,const float& r,bool akm=false){
     parabola ans;
     ans.a=p;
     ans.b=q;
     ans.c=r;
     return ans;
-}; */
+};
 parabola parabola_create(const float& p,const float& q,const float& r,bool akm=false){
     parabola ans;
     ans.set(p,q,r,akm);
     return ans;
 };
-/* parabola solveparabola(point* A,point* B,point* C){
-    float x1=A->getx();
-    float y1=A->gety();
-    float x2=B->getx();
-    float y2=B->gety();
-    float x3=C->getx();
-    float y3=C->gety();
-    float a=(x1*y2-x1*y3-x2*y1+x2*y3-x3*y2+x3*y1)/((x1-x3)*(x1-x2)*(x3-x2));
-    float b=((y1-y2)/(x1-x2))-((x1+x2)*a);
-    float c=y1-a*x1*x1-b*x1;
-    parabola w;
-    w.set(a,b,c);
-    return w;
-}; */

@@ -61,7 +61,7 @@ class line_r{
         return false;
     };
     friend ostream& operator<<(ostream& output,const line_r& i){
-        output<<i.name<<":y="<<i.k<<"x+"<<i.b<<';';
+        output<<'{'<<i.name<<":y="<<i.k<<"x+"<<i.b<<'}';
         return output;
     };
     void set(ratio& x,ratio& y,char c='l'){

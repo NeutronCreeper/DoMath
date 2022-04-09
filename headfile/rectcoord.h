@@ -8,9 +8,13 @@ using namespace std;
 
 class point{
     private:
-    float x=0,y=0;
+    float x,y;
     char name='P';
     public:
+    point(float a=0,float b=0){
+        x=a;
+        y=b;
+    };
     void operator=(const point& P){
         x=P.x;
         y=P.y;
@@ -66,9 +70,13 @@ class point{
 }; */
 class line{
     private:
-    float k=0,b=0;
+    float k,b;
     char name='l';
     public:
+    line(float x=1,float y=0){
+        k=x;
+        b=y;
+    };
     void operator=(const line& l){
         k=l.k;
         b=l.b;
@@ -78,7 +86,7 @@ class line{
         return false;
     };
     friend std::ostream& operator<<(std::ostream& output,const line& m){
-        output<<m.name<<":y="<<m.k<<"x+"<<m.b<<';';
+        output<<'{'<<m.name<<":y="<<m.k<<"x+"<<m.b<<'}';
         return output;
     };
     void set(float x,float y,char c='l'){

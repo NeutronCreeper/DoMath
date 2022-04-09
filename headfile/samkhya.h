@@ -27,8 +27,8 @@ long gcd(long m,long n){
     if(n==0) return m;
     return gcd(m-n,n);
 };
-long lcm(long* m,long* n){
-    return *m*(*n)/gcd(*m,*n);
+long lcm(long& m,long& n){
+    return m*n/gcd(m,n);
 };
 long pow_integer(const long& m,const short& n){
     return (long)std::round(std::pow(m,n));
