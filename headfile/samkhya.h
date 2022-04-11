@@ -7,14 +7,14 @@
 #include<cmath>
 #endif
 
-bool prime(long* p){
+inline bool prime(long* p){
     short m=sqrt(std::abs(*p))+1;
     for(int i=2;i<m;i++){
         if(*p%i==0) return false;
     }
     return true;
 };
-bool ifpow(long* m,short n=2){
+inline bool ifpow(long* m,short n=2){
     if(*m<0) return false;
     short i=(short)pow(*m,1/n);
     if(*m==pow(i,n)) return true;
@@ -30,6 +30,6 @@ long gcd(long m,long n){
 long lcm(long& m,long& n){
     return m*n/gcd(m,n);
 };
-long pow_integer(const long& m,const short& n){
+inline long pow_integer(const long& m,const short& n){
     return (long)std::round(std::pow(m,n));
 };
