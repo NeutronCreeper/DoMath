@@ -1,0 +1,41 @@
+// Unfixed codes are saved here
+
+//real:(ratio)^(ratio)
+/* class real{
+    //real:pow(ratio a,ratio b)
+    private:
+    ratio a,b;
+    public:
+    void set(long ap,short aq,long bp=1,short bq=1){
+        a.set(ap,aq);
+        b.set(bp,bq);
+    };
+    void operator=(real c){
+        a=c.a;
+        b=c.b;
+    };
+    void print(){
+        cout<<'(';
+        a.print();
+        cout<<")^(";
+        b.print();
+        cout<<')';
+    };
+    void simplify(){
+        
+    };
+}; */
+
+//reals:real+real+
+/* class reals{
+    private:
+    chainNode head;
+    chainNode* tail=&head;
+    real headvalue;
+    head.value=&headvalue;
+    void append(real a){
+        tail->up=new chainNode;
+        tail->up->value=a;
+        tail=tail->up;
+    }
+} */
