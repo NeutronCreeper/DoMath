@@ -17,6 +17,11 @@ class parabola_r{
     private:
     ratio a,b,c;
     public:
+    parabola_r(ratio x=ratio(1,1),ratio y=ratio(),ratio z=ratio()){
+        a=x;
+        b=y;
+        c=z;
+    };
     void set(ratio p,ratio q,ratio r,bool akm=0){
         if(akm){
             r+=(p*q*q-mul(p*r,4));
@@ -40,6 +45,6 @@ class parabola_r{
         return (-b-sqrt(delta()))/(2*a);
     }; */
     point_r top(){
-        return point_r_create(b/mul(a,-2),(mul(a*c,4)-b*b)/mul(a,4));
+        return point_r(b/mul(a,-2),(mul(a*c,4)-b*b)/mul(a,4));
     };
 };

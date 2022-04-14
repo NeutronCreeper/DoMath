@@ -7,11 +7,18 @@
 
 class ratio{
     //ratio:p/q
-    friend ratio ratio_create(long a,short b);
     private:
     long p=0;
-    short q=1;
+    unsigned short q=1;
     public:
+    inline ratio(long a=0,short b=1){
+        if(b<0){
+            q=~b+1;
+            p=~a+1;
+        }
+        p=a;
+        q=b;
+    };
     void set(long m,short n=1){
         p=m;
         q=n;
@@ -30,10 +37,6 @@ class ratio{
             q=~q+1;
             p=~p+1;
         };
-    };
-    ratio(long a=0,short b=1){
-        p=a;
-        q=b;
     };
     bool operator==(const ratio& m){
         if(this->p*m.q==this->q*m.p) return true;
@@ -118,23 +121,17 @@ class ratio{
         }
         return *this;
     };
-    ratio pow(const short& n){
+    ratio pow(const unsigned short& n){
         ratio ans;
         ans.simplify();
         ans.p=pow_integer(p,n);
         ans.q=pow_integer(q,n);
         return ans;
     };
-    friend ratio add(const ratio& m,const short& n);
-    friend ratio sub(const ratio& m,const short& n);
-    friend ratio mul(const ratio& m,const short& n);
-    friend ratio div(const ratio& m,const short& n);
-};
-ratio ratio_create(long a,short b=1){
-    ratio ans;
-    ans.p=a;
-    ans.q=b;
-    return ans;
+    void read(string notice="ratio=p/q,(p,q)="){
+        std::cout<<notice<<":\n";
+        cin>>p>>q;
+    };
 };
 ratio add(const ratio& m,const short& n){
     ratio ans=m;
@@ -156,12 +153,8 @@ ratio div(const ratio& m,const short& n){
     ans.div(n);
     return ans;
 };
-ratio to_ratio(short n){
-    return ratio_create(n,1);
-};
 ratio to_ratiof(float n){
-    ratio ans;
-    ans.set((long)10000*n,10000);
+    ratio ans((long)10000*n,10000);
     ans.simplify();
     return ans;
 };

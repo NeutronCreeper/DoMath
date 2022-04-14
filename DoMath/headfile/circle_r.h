@@ -21,6 +21,10 @@ class circle_r{
     point_r O;
     ratio r;
     public:
+    inline circle_r(ratio _O=ratio(),ratio _r=ratio(1,1)){
+        O=_O;
+        r=_r;
+    };
     void operator=(const circle_r& o){
         O=o.O;
         r=o.r;

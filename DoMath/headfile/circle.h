@@ -10,12 +10,15 @@
 #define _PI ((double)3.14159265359)
 #endif
 
-//circle:point O;float r;
 class circle{
     private:
     point O;
     float r=1;
     public:
+    circle(point o_=point(),float r_=1){
+        O=o_;
+        r=r_;
+    };
     void operator=(const circle& o){
         O=o.O;
         r=o.r;

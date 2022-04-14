@@ -58,16 +58,9 @@ class point{
     float gety(){
         return y;
     };
-    //friend point point_create(const float& a,const float& b,char c='P');
     friend float areaofTrianglef(point& A,point& B,point& C);
 };
-/* point point_create(const float& a,const float& b,char c='P'){
-    point ans;
-    ans.x=a;
-    ans.y=b;
-    ans.name=c;
-    return ans;
-}; */
+
 class line{
     private:
     float k,b;
@@ -119,16 +112,9 @@ class line{
         k=((m.gety())-(n.gety()))/((m.getx())-(n.getx()));
         b=((m.gety())-(k*(m.getx())));
     };
-    //friend line line_create(const float& x,const float& y,char c='l');
     friend point solve_from_line(line& i,line& j);
 };
-/* line line_create(const float& x,const float& y,char c='l'){
-    line ans;
-    ans.k=x;
-    ans.b=y;
-    ans.name=c;
-    return ans;
-}; */
+
 point solve_from_line(line& i,line& j){
     point ans;
     if(i.k==j.k){

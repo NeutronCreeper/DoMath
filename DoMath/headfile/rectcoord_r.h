@@ -14,6 +14,10 @@ class point_r{
     ratio x,y;
     char name='P';
     public:
+    point_r(ratio a=ratio(),ratio b=ratio()){
+        x=a;
+        y=b;
+    };
     friend ostream& operator<<(ostream& output,const point_r& P){
         output<<P.name<<'('<<P.x<<','<<P.y<<')';
         return output;
@@ -37,14 +41,7 @@ class point_r{
     ratio gety(){
         return y;
     };
-    friend point_r point_r_create(const ratio& a,const ratio& b);
     friend ratio areaofTriangle_r(point_r& A,point_r& B,point_r& C);
-};
-point_r point_r_create(const ratio& a,const ratio& b){
-    point_r ans;
-    ans.x=a;
-    ans.y=b;
-    return ans;
 };
 
 class line_r{
@@ -52,6 +49,10 @@ class line_r{
     ratio k,b;
     char name='l';
     public:
+    line_r(ratio x=ratio(1,1),ratio y=ratio()){
+        k=x;
+        b=y;
+    };
     void operator=(const line_r& l){
         k=l.k;
         b=l.b;
@@ -99,15 +100,9 @@ class line_r{
         k=((m.gety())-(n.gety()))/((m.getx())-(n.getx()));
         b=(m.gety())-(k*(m.getx()));
     };
-    friend line_r line_r_create(const ratio& m,const ratio& n);
     friend ratio areaofTriangle_r(point_r& A,point_r& B,point_r& C);
 };
-line_r line_r_create(const ratio& m,const ratio& n){
-    line_r ans;
-    ans.k=m;
-    ans.b=n;
-    return ans;
-};
+
 point_r solve_from_line_r(line_r& i,line_r& j){
     point_r ans;
     if(i.getk()==j.getk()){
