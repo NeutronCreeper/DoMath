@@ -16,5 +16,5 @@
 #include<cmath>
 #endif
 #ifndef _ALL_INCLUDES
-#include "headfile/_all_includes.h"
+#include "headfile/_all.h"
 #endif

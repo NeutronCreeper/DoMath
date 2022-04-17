@@ -6,16 +6,19 @@
 #ifndef RECTCOORD
 #include "rectcoord.h"
 #endif
-#ifndef _PI
-#define _PI ((double)3.14159265359)
+#ifndef PI_
+#define PI_ ((double)3.14159265359)
 #endif
 
-//circle:point O;float r;
 class circle{
     private:
     point O;
     float r=1;
     public:
+    circle(point o_=point(),float r_=1){
+        O=o_;
+        r=r_;
+    };
     void operator=(const circle& o){
         O=o.O;
         r=o.r;
@@ -25,9 +28,9 @@ class circle{
         return false;
     };
     float circumference(){
-        return 2*r*_PI;
+        return 2*r*PI_;
     };
     float area(){
-        return _PI*r*r;
+        return PI_*r*r;
     };
 };
