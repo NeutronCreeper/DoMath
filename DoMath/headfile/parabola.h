@@ -82,17 +82,4 @@ class parabola{
         b=((y1-y2)/(x1-x2))-((x1+x2)*a);
         c=y1-a*x1*x1-b*x1;
     };
-    friend parabola parabola_create(const float& p,const float& q,const float& r,bool akm=false);
-};
-parabola parabola_create(const float& p,const float& q,const float& r,bool akm=false){
-    parabola ans;
-    ans.a=p;
-    ans.b=q;
-    ans.c=r;
-    return ans;
-};
-parabola parabola_create(const float& p,const float& q,const float& r,bool akm=false){
-    parabola ans;
-    ans.set(p,q,r,akm);
-    return ans;
 };
