@@ -9,11 +9,11 @@
 #ifndef RECTCOORD_RATIO
 #include "rectcoord_r.h"
 #endif
-#ifndef _PI
-#define _PI ((double)3.14159265359)
+#ifndef PI_
+#define PI_ ((double)3.14159265359)
 #endif
-#ifndef _PI_r
-#define _PI_r (to_ratiof(_PI))
+#ifndef PI_r
+#define PI_r ((double)(PI_))
 #endif
 
 class circle_r{
@@ -21,6 +21,10 @@ class circle_r{
     point_r O;
     ratio r;
     public:
+    inline circle_r(ratio _O=ratio(),ratio _r=ratio(1,1)){
+        O=_O;
+        r=_r;
+    };
     void operator=(const circle_r& o){
         O=o.O;
         r=o.r;
@@ -30,13 +34,9 @@ class circle_r{
         return false;
     };
     ratio circumference(){
-        ratio ans;
-        ans=r;
-        ans.mul(2);
-        ans*=_PI_r;
-        return ans;
+        return r*2;
     };
     ratio area(){
-        return r*r*_PI_r;
+        return r*r;
     };
-}; 
+};
