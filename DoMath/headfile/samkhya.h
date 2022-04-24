@@ -6,30 +6,31 @@
 #ifndef cmath
 #include<cmath>
 #endif
+#ifndef MATHPLUS
+#include "mathplus.h"
+#endif
+#ifndef PRIME
+#include "prime.h"
+#endif
 
-inline bool prime(long p){
-    short m=sqrt(std::abs(p))+1;
-    for(int i=2;i<m;i++){
-        if(p%i==0) return false;
-    }
-    return true;
+bool ifpow(const long& m,const unsigned short& n=2){
+    if((m<0)&&(n%2==0)) return false;
+    float a=pow(m,(float)((float)1/(float)n));
+    return (float)a==(int)a;
 };
-inline bool ifpow(long* m,short n=2){
-    if(*m<0) return false;
-    short i=(short)pow(*m,1/n);
-    if(*m==pow(i,n)) return true;
-    return false;
-};
-long gcd(long m,long n){
-    m=std::abs(m);
-    n=std::abs(n);
+
+long gcdl(long m,long n){
+    m=mthpabs(m);
+    n=mthpabs(n);
     if(m<n) std::swap(m,n);
-    if(n==0) return m;
-    return gcd(m%n,n);
+    if(!n) return m;
+    return gcdl(m%n,n);
 };
+
 inline long lcm(long& m,long& n){
-    return m*n/gcd(m,n);
+    return m*n/gcdl(m,n);
 };
-inline long pow_integer(const long& m,const short& n){
+
+inline long pow_integer(const long& m,unsigned char n){
     return (long)std::round(std::pow(m,n));
 };

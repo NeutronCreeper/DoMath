@@ -5,6 +5,7 @@
 
 #include "including.h"
 #include "setting.h"
+#include "shell.h"
 
 using namespace std;
 
@@ -18,9 +19,6 @@ using namespace std;
 
 int main(const int argc,const char* argv[]){
     using namespace std;
-    
-    ios::sync_with_stdio(false);
-    
     cout<<"DoMath:"<<DOMATH_version<<"\n...is successfully running;\n";
     string argvstr[argc];
     if(argc!=0){
@@ -32,7 +30,8 @@ int main(const int argc,const char* argv[]){
     }else if(argc==0){
         return 0;
     }
-    cout<<argvstr[0]<<'\n';
-    if(argc>1) cout<<argvstr[1]<<'\n';
+    cout<<"at "<<argvstr[0]<<',';
+    if(argc>1) cout<<argvstr[1]<<";\n";
+    shell();
     return 0;
 }

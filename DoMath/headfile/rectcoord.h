@@ -3,145 +3,126 @@
 #ifndef iostream
 #include<iostream>
 #endif
+#ifndef MATHPLUS
+#include "mathplus.h"
+#endif
 
-using namespace std;
-
-class point{
+template<typename coord>class point{
     private:
-    float x,y;
-    char name='P';
+    coord x,y;
     public:
-    point(float a=0,float b=0){
+    point(coord a=0,coord b=0){
         x=a;
         y=b;
     };
-    void operator=(const point& P){
+    void operator()(coord a=0,coord b=0){
+        x=a;
+        y=b;
+    };
+    void operator=(const point<coord>& P){
         x=P.x;
         y=P.y;
     };
-    bool operator==(const point& P){
-        if((x==P.x)&&(y==P.y)) return true;
-        return false;
+    bool operator==(const point<coord>& P){
+        return (x==P.x)&&(y==P.y);
     };
-    void operator+=(const point& P){
+    void operator+=(const point<coord>& P){
         x+=P.x;
         y+=P.y;
     };
-    void operator-=(const point& P){
+    void operator-=(const point<coord>& P){
         x-=P.x;
         y-=P.y;
     };
-    point operator+(const point& P){
-        point ans;
-        ans.x=x+P.x;
-        ans.y=y+P.y;
-        return ans;
+    point operator+(const point<coord>& P){
+        return point(x+P.x,y+P.y);
     };
-    point operator-(const point& P){
-        point ans;
-        ans.x=x-P.x;
-        ans.y=y-P.x;
-        return ans;
+    point operator-(const point<coord>& P){
+        return point(x-P.x,y-P.y);
     };
-    friend std::ostream& operator<<(std::ostream& output,const point& m){
-        output<<m.name<<'('<<m.x<<'/'<<m.y<<')';
+    friend std::ostream& operator<<(std::ostream& output,const point<coord>& m){
+        output<<'('<<m.x<<','<<m.y<<')';
         return output;
     };
-    void set(float a,float b,char c='P'){
-        x=a;
-        y=b;
-        name=c;
-    };
-    float getx(){
+    coord getx(){
         return x;
     };
-    float gety(){
+    coord gety(){
         return y;
     };
-    //friend point point_create(const float& a,const float& b,char c='P');
-    friend float areaofTrianglef(point& A,point& B,point& C);
 };
-/* point point_create(const float& a,const float& b,char c='P'){
-    point ans;
-    ans.x=a;
-    ans.y=b;
-    ans.name=c;
-    return ans;
-}; */
-class line{
+
+
+
+
+template<typename coefficient>class line{
     private:
-    float k,b;
+    coefficient k,b;
     char name='l';
     public:
-    line(float x=1,float y=0){
+    line(coefficient x=1,coefficient y=0){
         k=x;
         b=y;
     };
-    void operator=(const line& l){
+    void operator=(const line<coefficient>& l){
         k=l.k;
         b=l.b;
     };
-    bool operator==(const line& l){
-        if((k==l.k)&&(b==l.b)) return true;
-        return false;
+    bool operator==(const line<coefficient>& l){
+        return (k==l.k)&&(b==l.b);
     };
-    friend std::ostream& operator<<(std::ostream& output,const line& m){
+    friend std::ostream& operator<<(std::ostream& output,const line<coefficient>& m){
         output<<'{'<<m.name<<":y="<<m.k<<"x+"<<m.b<<'}';
         return output;
     };
-    void set(float x,float y,char c='l'){
+    void operator()(coefficient x=1,coefficient y=0,char c='l'){
         k=x;
         b=y;
         name=c;
     };
-    float getk(){
+    coefficient getk(){
         return k;
     };
-    float getb(){
+    coefficient getb(){
         return b;
     };
-    float valueofY(float x){
+    coefficient valueofY(coefficient x){
         return k*x+b;
     };
-    float valueofX(float y){
+    coefficient valueofX(coefficient y){
         return (y-b)/k;
     };
-    bool parallel(line l){
-        if(k==l.k) return true;
-        return false;
+    bool parallel(const line<coefficient>& l){
+        return k==l.k;
     };
-    bool vertical(line l){
-        if(k*l.k==-1) return true;
-        return false;
+    bool vertical(const line<coefficient>& l){
+        return k*l.k==-1;
     };
-    void solve_from_point(point& m,point& n){
-        if(m.getx()==n.getx()) std::cout<<"[Warning]An unsolved problem occured;\n";
-        k=((m.gety())-(n.gety()))/((m.getx())-(n.getx()));
-        b=((m.gety())-(k*(m.getx())));
-    };
-    //friend line line_create(const float& x,const float& y,char c='l');
-    friend point solve_from_line(line& i,line& j);
+    //friend template solve_from_line(const line<num>& i,const line<num>& j);
 };
-/* line line_create(const float& x,const float& y,char c='l'){
-    line ans;
-    ans.k=x;
-    ans.b=y;
-    ans.name=c;
-    return ans;
-}; */
-point solve_from_line(line& i,line& j){
-    point ans;
-    if(i.k==j.k){
-        cout<<"[Warning]PARALLEL: No intersection;\n";
-        ans.set(0,0);
+
+
+
+template<typename num>point<num> solve_from_line(line<num>& i,line<num>& j){
+    point<num> ans;
+    if(i.getk()==j.getk()){
+        std::cout<<"[Warning]PARALLEL: No intersection;\n";
+        ans(0,0);
         return ans;
     }
-    float x=((j.b-i.b)/(i.k-j.k));
-    ans.set(x,i.k*x+i.b);
+    num x=((j.getb()-(num)i.getb())/(i.getk()-j.getk()));
+    ans(x,i.getk()*x+i.getb());
     return ans;
 };
-float areaofTrianglef(point& A,point& B,point& C){
-    line l;
-    l.solve_from_point(B,C);
-    return std::abs(A.y-l.valueofY(A.x))*std::abs(B.x-C.x)/2;
+
+template<typename num>line<num> solve_from_point(point<num>& m,point<num>& n){
+    if(m.getx()==n.getx()) std::cout<<"[Warning]An unsolved problem occured;\n";
+    num k=((m.gety())-(n.gety()))/((m.getx())-(n.getx()));
+    return line<num>(k,(m.gety())-(k*(m.getx())));
 };
+
+template<typename num>num areaofTriangle(point<num>& A,point<num>& B,point<num>& C){ 
+    line<num> l=solve_from_point<num>(B,C);
+    return std::abs(A.gety()-l.valueofY(A.getx()))*std::abs(B.getx()-C.getx())/2;
+};
+

@@ -9,12 +9,15 @@
 #ifndef bitset
 #include<bitset>
 #endif
+#ifndef vector
+#include<vector>
+#endif
 #ifndef ctime
 #include<ctime>
 #endif
 #ifndef cmath
 #include<cmath>
 #endif
-#ifndef _ALL_INCLUDES
-#include "headfile/_all_includes.h"
+#ifndef _ALL
+#include "headfile/_all.h"
 #endif
