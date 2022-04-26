@@ -1,36 +1,35 @@
 #define _ALL
-
-//All done works are included here
+//All headfiles in this directory are included here
 #ifndef MATHPLUS
-#include "mathplus.h"
+#include ".common/mathplus.h"
 #endif
 #ifndef STRUCTURE
-#include "structure.h"
+#include ".common/structure.h"
 #endif
 #ifndef LOCALTIME
-#include "localtime.h"
+#include ".common/log/localtime.h"
 #endif
 #ifndef LOG
-#include "log.h"
+#include ".common/log/log.h"
 #endif
 #ifndef SAMKHYA
-#include "samkhya.h"
+#include "samkhya/samkhya.h"
 #endif
 #ifndef RATIO
-#include "ratio.h"
-#endif
-#ifndef RECTCOORD
-#include "rectcoord.h"
-#endif
-#ifndef PARABOLA
-#include "parabola.h"
-#endif
-#ifndef RAD
-#include "rad.h"
-#endif
-#ifndef CIRCLE
-#include "circle.h"
+#include "ratio/ratio.h"
 #endif
 #ifndef REAL
-#include "real.h"
+#include "real/real.h"
+#endif
+#ifndef RECTCOORD
+#include "rectcoord/rectcoord.h"
+#endif
+#ifndef PARABOLA
+#include "parabola/parabola.h"
+#endif
+#ifndef ANGLE
+#include "angle/angle.h"
+#endif
+#ifndef CIRCLE
+#include "circle/circle.h"
 #endif
