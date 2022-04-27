@@ -22,7 +22,7 @@
 
 
 void test(int flag){
-    std::cout<<"Command test is successful;\n";
+    printf("Command test is successful;\n");
 };
 struct cmd{
     std::string command_name;

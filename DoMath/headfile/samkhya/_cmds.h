@@ -7,7 +7,7 @@
 namespace samkhya_cmds{
 
 void issqr(int flag){
-    std::cout<<"Please type in a positive integer to check if it is a square number;\n";
+    printf("Please type in a positive integer to check if it is a square number;\n");
     unsigned long a;
     std::cin>>a;
     if(!std::cin.good()){
@@ -16,57 +16,44 @@ void issqr(int flag){
         if(ifpow(a)){
             std::cout<<a<<"="<<std::sqrt(a)<<"^2;\n";
         }else{
+            printf("%ldu");
             std::cout<<a<<" is not a square number;\n";
         };
     };
 };
 
-void factorize(int flag){
-    std::cout<<"Please type in an integer to factorize;\n";
-    long a;
-    std::cin>>a;
-    if(!std::cin.good()){
-        throw "Not a legal integer!\n";
-    }else{
-        long* factors=getPrimeFactors(a);
-        std::cout<<"Altogether "<<factors[0]<<" prime factors;\n"<<a<<'=';
-        for(char i=1;i<factors[0];i++) std::cout<<factors[i]<<'*';
-        std::cout<<factors[factors[0]]<<";\n";
-    };
-};
-
 void GCD(int flag){
-    std::cout<<"Please type in 2 integers to get the greatest common divisor;\n";
+    printf("Please type in 2 integers to get the greatest common divisor;\n");
     long a,b;
     std::cin>>a>>b;
     if(std::cin.good()){
-        std::cout<<"Greatest common divisor of ("<<a<<','<<b<<") is "<<gcdl(a,b)<<";\n";
+        printf("Greatest common divisor of (%ld,%ld) is %ld;\n",a,b,gcdl(a,b));
     }else{
         throw "Not legal integers!\n";
     };
 };
 
 void LCM(int flag){
-    std::cout<<"Please type in 2 integers to get the least common multiple;\n";
+    printf("Please type in 2 integers to get the least common multiple;\n");
     long a,b;
     std::cin>>a>>b;
     if(std::cin.good()){
-        std::cout<<"Least common multiple of ("<<a<<','<<b<<") is "<<lcml(a,b)<<";\n";
+        printf("Least common multiple of (%ld,%ld) is %ld;\n",a,b,lcml(a,b));
     }else{
         throw "Not legal integers!\n";
     };
 };
 
 void ispow(int flag){
-    std::cout<<"Please type in 2 integers to check whether one is a certain number of power of an integer;\n";
+    printf("Please type in 2 integers to check whether one is a certain number of power of an integer;\n");
     long a;
     short b;
     std::cin>>a>>b;
     if(std::cin.good()){
         if(ifpow(a,b)){
-            std::cout<<a<<'='<<pow(a,(float)1/(float)b)<<'^'<<b<<";\n";
+            printf("%ld=%ld^%d;\n",a,(int)pow(a,(float)1/(float)b),b);
         }else{
-            std::cout<<a<<" is not the "<<b<<" power of an integer;\n";
+            printf("%ld is not the %d power of an integer;\n",a,b);
         };
     }else{
         throw "Not legal integers!\n";

@@ -7,7 +7,7 @@
 namespace prime_cmds{
 
 void isprime(int flag){
-    std::cout<<"Please type in a positive integer to check if it is prime;\n";
+    printf("Please type in a positive integer to check if it is prime;\n");
     unsigned long a;
     std::cin>>a;
     bool isprime;
@@ -19,30 +19,30 @@ void isprime(int flag){
         isprime=primel(a);
     };
     if(isprime){
-        std::cout<<a<<" is a prime number;\n";
+        printf("%ld is a prime number;\n",a);
     }else{
-        std::cout<<a<<" is not a prime number;\n";
+        printf("%ld is not a prime number;\n",a);
     };
 };
 
 void factorize(int flag){
-    std::cout<<"Please type in an integer to factorize;\n";
+    printf("Please type in an integer to factorize;\n");
     long a;
     std::cin>>a;
     if(!std::cin.good()){
         throw "Not a legal integer!\n";
     }else if(!primel(a)){
         long* factors=getPrimeFactors(a);
-        std::cout<<"Altogether "<<factors[0]<<" prime factors;\n"<<a<<'=';
-        for(char i=1;i<factors[0];i++) std::cout<<factors[i]<<'*';
-        std::cout<<factors[factors[0]]<<";\n";
+        printf("Altogether: %ld prime factors;\n%ld=",factors[0],a);
+        for(char i=1;i<factors[0];i++) printf("%ld*",factors[i]);
+        printf("%ld;\n",factors[factors[0]]);
     }else{
-        std::cout<<a<<" is a prime number;\n";
+        printf("%ld is a prime number;\n",a);
     };
 };
 
 void primelist(int flag){
-    std::cout<<"Please type in a positive integer to list prime numbers under it;\n";
+    printf("Please type in a positive integer to list prime numbers under it;\n");
     unsigned short a;
     std::cin>>a;
     if(!std::cin.good()){
@@ -51,15 +51,15 @@ void primelist(int flag){
     char lenlimit=0;
     short count=0;
     for(short i=0;primes16[i]<a;i++){
-        std::cout<<primes16[i]<<' ';
+        printf("%d ",primes16[i]);
         count++;
         lenlimit++;
         if(lenlimit>15){
-            std::cout<<'\n';
+            printf("\n");
             lenlimit=0;
         };
     };
-    std::cout<<"\nAltogether: "<<count<<";\n";
+    printf("\nAltogether: %d;\n",count);
 };
 
 }

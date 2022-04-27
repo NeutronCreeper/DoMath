@@ -10,11 +10,10 @@
 namespace rectcoord_cmds{
 
 void solveline(int flag){
-    std::cout<<"Please type in the type of 2 points;\n";
-    std::cout<<"'i' for <int>, 'f' for <float>, 'r' for <ratio>, 'R' for <real>;\n";
+    printf("Please type in the type of 2 points;\n'i' for <int>, 'f' for <float>, 'r' for <ratio>, 'R' for <real>;\n");
     char ch;
     std::cin>>ch;
-    std::cout<<"Please type in coordinates of 2 points;\n";
+    printf("Please type in coordinates of 2 points;\n");
     if(ch=='i'){
         int a,b,c,d;
         std::cin>>a>>b>>c>>d;
@@ -46,11 +45,10 @@ void solveline(int flag){
 };
 
 void solvepoint(int flag){
-    std::cout<<"Please type in the type of 2 lines;\n";
-    std::cout<<"'i' for <int>, 'f' for <float>, 'r' for <ratio>, 'R' for <real>;\n";
+    printf("Please type in the type of 2 lines;\n'i' for <int>, 'f' for <float>, 'r' for <ratio>, 'R' for <real>;\n");
     char c;
     std::cin>>c;
-    std::cout<<"Please type in formulas of 2 lines;\n";
+    printf("Please type in formulas of 2 lines;\n");
     if(c=='i'){
         int a,b,c,d;
         std::cin>>a>>b>>c>>d;

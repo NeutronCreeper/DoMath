@@ -8,15 +8,14 @@
 namespace parabola_cmds{
 
 void solveparabola(int flag){
-    std::cout<<"Please type in the type of 3 points;\n";
-    std::cout<<"'f' for <float>, 'R' for <real>;\n";
+    printf("Please type in the type of 3 points;\n'f' for <float>, 'R' for <real>;\n");
     char ch;
     std::cin>>ch;
     if(std::cin.good()){
         if(ch=='R'){
-            std::cout<<"To be developed!\n";
+            printf("To be developed!\n");
         }else if(ch=='f'){
-            std::cout<<"Please type in coordinates of 3 points;\n";
+            printf("Please type in coordinates of 3 points;\n");
             float a,b,c,d,e,f;
             std::cin>>a>>b>>c>>d;
             if(std::cin.good()){
@@ -36,16 +35,14 @@ void solveparabola(int flag){
 };
 
 void toppoint(int flag){
-    std::cout<<"Please type in the type of the parabola;\n";
-    std::cout<<"'f' for <float>, 'R' for <real>;\n";
+    printf("Please type in the type of the parabola;\n'f' for <float>, 'R' for <real>;\n");
     char ch;
     std::cin>>ch;
     if(std::cin.good()){
         if(ch=='R'){
-            std::cout<<"To be developed!\n";
+            printf("To be developed!\n");
         }else if(ch=='f'){
-            std::cout<<"Please type in the formular of a parabola;\n";
-            std::cout<<"{y=ax^2+bx+c}, type in (a,b,c);\n";
+            printf("Please type in the formular of a parabola;\n{y=ax^2+bx+c}, type in (a,b,c);\n");
             float a,b,c;
             std::cin>>a>>b>>c;
             if(std::cin.good()){

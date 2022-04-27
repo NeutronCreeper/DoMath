@@ -182,6 +182,9 @@ class ratio{
         q=60000;
         simplify();
     };
+    void print(){
+        printf("%c%ld%c%ld%c",'(',p,'/',q,')');
+    };
 };
 
 
